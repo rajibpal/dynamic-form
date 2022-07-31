@@ -1,0 +1,44 @@
+<h3>Add/Update Field:</h3>
+<form #f="ngForm">
+
+    <div class="form-group">
+        <label>Unique ID</label>
+
+    </div>
+    <div class="checkbox">
+        <label> <input type="checkbox" [(ngModel)]="addUpdateField.Visible" name="Visible" #visible="ngModel">
+            <b>Visible</b></label>
+    </div>
+
+    <div class="checkbox">
+        <label> <input type="checkbox" [(ngModel)]="addUpdateField.Required" name="Req" #Required="ngModel">
+            <b>Required</b> </label>
+    </div>
+
+    <div class="form-group">
+        <label>Order<span class="required">*</span>:&nbsp; </label>
+        <input class="form-control" type="number" [(ngModel)]="addUpdateField.Order" name="Order" #Order="ngModel"
+            required>
+    </div>
+    <div class="form-group">
+        <label>Name/Label<span class="required">*</span>: &nbsp;</label>
+        <input class="form-control" type="text" [(ngModel)]="addUpdateField.Name" name="nameLabel" #nameLabel="ngModel"
+            required>
+    </div>
+    <div class="form-group">
+        <label>Type<span class="required">*</span>: &nbsp;</label>
+        <select class="form-control" [(ngModel)]="addUpdateField.Type" #type="ngModel" name="type" required>
+            <option *ngFor="let option of typeOptions" [value]="option">{{option}}</option>
+        </select>
+    </div>
+    <div class="form-group" *ngIf="type.value == 'Dropdown' || type.value=='Multiselect'">
+        <label>Options<span class="required">*</span>: &nbsp;</label>
+        <textarea placeholder="Please enter options with comma seperated values" class="form-control"
+            [(ngModel)]="addUpdateField.Value" name="option" #option="ngModel" required></textarea>
+    </div>
+    <div class="alert alert-danger" *ngIf=" f.form.touched && f.form.invalid">
+        Please fill all the required fields.
+    </div>
+    <button class="btn btn-primary pull-left" [disabled]="!f.form.valid" (click)="addForms()">Save</button>
+    <button class="btn btn-danger pull-right" (click)="cancel()">Cancel</button>
+</form>

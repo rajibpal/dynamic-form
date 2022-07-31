@@ -1,0 +1,24 @@
+.formDesignContainer{
+    width: 70%;
+    float: left;
+    padding: 5px;
+    height: 510px;
+}
+
+.addUpdateContainer{
+    width: 30%;
+    border-left: 1px solid black;
+    float: left;
+    padding: 5px;
+    height: 510px;
+}
+.formDesignerLabel{
+    padding: 10px 5px 5px 5px;
+    font-weight: bold;
+}
+.addUpdate{
+    padding: 10px 5px;
+}
+.selected{
+    background-color: aqua;
+}
